@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #19778c, #095f88);
+    background-size: 1400% 300%;
+    animation: dynamics 6s ease infinite;
+    -webkit-animation: dynamics 6s ease infinite;
+    -moz-animation: dynamics 6s ease infinite;
+    font-size: 14px;
+    color: #ffffff;
+    min-height: 700px;
+}
+
+@keyframes dynamics {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+.log-con > span {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 2px;
+    display: block;
+    margin: 20px 0 44px 0;
+}
+
+.log-con > span::after {
+    display: block;
+    content: '';
+    width: 57px;
+    height: 3px;
+    background: #ffffff;
+    margin-top: 16px;
+    justify-content: center;
+    position: relative;
+    left: 206px;
+}
+
+.log-con > input {
+    display: block;
+    margin: 10px 0 32px 70px;
+    width: 330px;
+    height: 42px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    opacity: 0.9;
+    border: 0;
+    font-size: 16px;
+    outline: none;
+    padding-left: 10px;
+    color: #000000;
+}
+
+.log-con > a {
+    width: 340px;
+    height: 44px;
+    background-color: #0090ff;
+    border-radius: 4px;
+    display: block;
+    margin: 10px 0 0 70px;
+    text-align: center;
+    line-height: 44px;
+    cursor: pointer;
+    opacity: 1;
+}
+
+input::-webkit-input-placeholder {
+    color: #000000;
+    font-size: 16px;
+}
