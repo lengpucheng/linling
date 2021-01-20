@@ -31,6 +31,6 @@ public class AppInfoMvc {
     @GetMapping
     public String appInfoPage(Model model) {
         model.addAttribute("app", appInfoValue);
-        return "index";
+        return "AppInfo";
     }
 }

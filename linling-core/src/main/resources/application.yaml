@@ -13,7 +13,7 @@ spring:
       max-active: 30 # 最大连接数
       min-idle: 5    # 最小连接量
       max-wait: 10000 # 最大等待时间 10s
-      validation-query: SELECT 'hll' # 8小时空闲查询一次 WTUCloud 避免连接关闭
+      validation-query: SELECT 'linling' # 8小时空闲查询一次避免连接关闭
       time-between-eviction-runs-millis: 60000 # 空闲连接检查间隔
       min-evictable-idle-time-millis: 300000  # 空闲阈值
   # mvc
