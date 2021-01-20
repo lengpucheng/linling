@@ -21,23 +21,23 @@ public class SwaggerInfoValue {
      */
     private boolean enable = false;
     /**
-     * 设置Swagger基本扫描包
+     * 设置Swagger基本扫描包 必须配置
      */
     private String basePackagePath = "cn.hll520.linling";
     /**
      * 当前API 版本
      */
-    private String version = "v1.0";
+    private String version = null;
     /**
-     * Swagger 标题
+     * Swagger 标题  不配置 首页 应用Name+API
      */
-    private String title = "LinlingCore API";
+    private String title = null;
     /**
-     * Swagger 页面的描述
+     * Swagger 页面的描述 不配置 首页 应用描述
      */
-    private String description = "LinlingCore API 文档描述 \n Power by LPC";
+    private String description = null;
     /**
-     * Swagger点击后跳转目录
+     * Swagger点击后跳转目录  不配置使用 应用首页
      */
-    private String url = "/";
+    private String url = null;
 }

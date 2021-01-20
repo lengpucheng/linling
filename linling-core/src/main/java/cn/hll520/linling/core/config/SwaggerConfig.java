@@ -1,5 +1,6 @@
 package cn.hll520.linling.core.config;
 
+import cn.hll520.linling.core.config.value.AppInfoValue;
 import cn.hll520.linling.core.config.value.SwaggerInfoValue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,14 +24,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
     private final SwaggerInfoValue value;
+    private final AppInfoValue appValue;
 
     /**
      * 构造函数自动注入
      *
-     * @param value {@link SwaggerInfoValue}
+     * @param value    {@link SwaggerInfoValue}
+     * @param appValue {@link AppInfoValue}
      */
-    public SwaggerConfig(SwaggerInfoValue value) {
+    public SwaggerConfig(SwaggerInfoValue value, AppInfoValue appValue) {
         this.value = value;
+        this.appValue = appValue;
     }
 
     /**
@@ -59,14 +63,14 @@ public class SwaggerConfig {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                //设置文档标题(API名称)
-                .title(value.getTitle())
-                //文档描述
-                .description(value.getDescription())
-                //服务条款URL
-                .termsOfServiceUrl(value.getUrl())
-                //版本号
-                .version(value.getVersion())
+                //设置文档标题(API名称) 未配置就用应用名
+                .title(value.getTitle() == null ? (appValue.getAppName() + " API文档") : value.getTitle())
+                //文档描述  未配置就用应用描述
+                .description(value.getDescription() == null ? appValue.getAppDescription() : value.getDescription())
+                //服务条款URL 未配置就用应用首页
+                .termsOfServiceUrl(value.getUrl() == null ? appValue.getAppHost() : value.getUrl())
+                //版本号 未配置就用 应用版本
+                .version(value.getVersion() == null ? appValue.getAppVersion() : value.getVersion())
                 .build();
     }
 }
