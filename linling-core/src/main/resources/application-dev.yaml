@@ -41,36 +41,7 @@ linling:
       password: admin123
     # 管理 后台 配置
     manage:
-      title: Core-Test
+      title: Linling-Manage
       top:
         url: '#'
-        name: Linling-CORE
-      # 头部导航
-      navbar:
-        - name: LinLing
-          url: http://hll520.cn
-        - name: 百度
-          url: http://baidu.com/
-        - name: 360
-          url: http://so.com
-      # 左侧导航
-      menu:
-        # 一个组
-        - name: linling
-          menus:
-            - name: Core
-              url: /core
-            - name: Manage
-              url: /core/manage
-        - name: search
-          menus:
-            - name: 百度
-              url: http://baidu.com/
-            - name: 360
-              url: http://so.com
-        - name: video
-          menus:
-            - name: BILIBILI
-              url: http://bilibili.com
-            - name: YOUKU
-              url: http://youku.com
+        name: LinlingCore-Manage
