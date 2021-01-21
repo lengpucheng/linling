@@ -1,0 +1,114 @@
+<!--
+ *  创建时间: 2020-12-16-9:22
+ *  作   者: lpc
+ *  Email : lpc@hll520.cn
+-->
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- 上述3个meta标签*必须*放在最前面，响应式布局 -->
+    <title th:text="${app.getTitle()}">控制台</title>
+    <!-- JQuery -->
+    <script src="/core/static/js/jquery.min.js"></script>
+    <!-- Bootstrap核心CSS 、JS-->
+    <link href="/core/static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/core/static/js/bootstrap.min.js"></script>
+    <!-- 适用于Surface /台式机Windows 8错误的IE10视口黑客 -->
+    <script src="/core/static/js/ie10-viewport-bug-workaround.js"></script>
+    <link href="/core/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- 样式 -->
+    <link href="/core/static/css/manage.css" rel="stylesheet">
+    <script>
+        /* 点击变蓝 */
+        $(function () {
+            /* 当点击菜单 */
+            $("#menu li").click(function () {
+                /* 移除全部样式 */
+                $("#menu li").removeClass("active");
+                /* 给当前添加样式 */
+                $(this).addClass("active");
+            });
+            // // 判断是否登录
+            // isLogin();
+            // let user = getLocal("user");
+            // // 姓名
+            // $("#userName").html(user.name);
+            // // 头像
+            // $("#avatar").html(user.name.substr(0, 1));
+        });
+    </script>
+</head>
+<body>
+<!-- 导航 -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar"
+                    data-toggle="collapse" type="button">
+                <span class="sr-only">导航条</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"
+               th:href="${app.getTop().getUrl()}"
+               th:id="${app.getTop().getId()}"
+               th:target="${app.getTop().getTarget()}"
+               th:text="${app.getTop().getName()}">LinlingCore</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav navbar-link">
+                <li th:each="navbar : ${app.getNavbar()}">
+                    <a href="#" target="_view" th:href="${navbar.getUrl()}"
+                       th:target="${navbar.getTarget()}" th:text="${navbar.getName()}">
+                        菜单
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <button class="btn btn-primary navbar-btn" onclick="signIn()" type="button">
+                        <span class="glyphicon glyphicon-heart"></span> 签到
+                    </button>
+                </li>
+                <li><a href="home/welcome.html" target="_view">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span id="userName">姓名</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 左边菜单 -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" id="menu">
+            <div style="height: 10%;text-align:center;margin-bottom: 30px">
+                <h1 id="avatar" style="font-size: 50px">YOU</h1>
+            </div>
+            <ul class="nav nav-sidebar" th:each="gruop:${app.getMenu()}">
+                <li th:each="menu:${gruop.getMenus()}">
+                    <a href="#" target="_view" th:href="${menu.getUrl()}"
+                       th:target="${menu.getTarget()}"
+                       th:text="${menu.getName()}">
+                        操作菜单
+                    </a>
+                </li>
+            </ul>
+            <a style=": 50px;">
+                <button class="btn btn-danger" onclick="logout()" style="width: 100%">退出登录</button>
+            </a>
+        </div>
+        <!-- 业务窗口 -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <!-- iframe -->
+            <iframe frameborder="0" height="90%" id="_view" name="_view" src="/core"
+                    th:src="${app.getWelcome()}" width="100%"></iframe>
+        </div>
+    </div>
+</div>
+</body>
+</html>

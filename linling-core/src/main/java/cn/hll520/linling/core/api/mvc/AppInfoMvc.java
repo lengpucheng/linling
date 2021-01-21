@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @version 1.0  2021-01-19-23:08
  * @since 2021-01-19-23:08
  */
-@Api(tags = "应用信息页")
+@Api(tags = "LinLingCore")
 @Controller
 @RequestMapping(AppConfig.APP_INFO_HOST)
 public class AppInfoMvc {

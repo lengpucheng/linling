@@ -9,5 +9,12 @@ package cn.hll520.linling.core.config;
  * @since 2021-01-19-21:57
  */
 public class AppConfig {
+    /**
+     * APP 信息首页
+     */
     public final static String APP_INFO_HOST = "/core";
+    /**
+     * 应用后台首页
+     */
+    public final static String APP_MANAGE_HOST = "/core/manage";
 }

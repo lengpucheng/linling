@@ -136,7 +136,7 @@ function doLogin(id, name, remember, success) {
                 window.location.href = local;
                 return;
             }
-            window.location.href = "home.html";
+            window.location.href = "index.html";
         };
 
     // 请求
