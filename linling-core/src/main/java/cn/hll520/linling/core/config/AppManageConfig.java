@@ -44,13 +44,31 @@ public class AppManageConfig {
         if (value.getMenu() == null) {
             List<MenuGroup> menuGroups = new ArrayList<>();
             MenuGroup menuGroup = new MenuGroup();
-            menuGroup.setName("No1");
+            menuGroup.setName("defaultMenu");
             menuGroup.setMenus(defaultMenus());
             menuGroups.add(menuGroup);
             value.setMenu(menuGroups);
         }
         if (value.getWelcome() == null) {
-            value.setWelcome(value.getMenu().get(0).getMenus().get(0).getUrl());
+            if (value.getMenu().size() > 0 && value.getMenu().get(0).getMenus().size() > 0)
+                value.setWelcome(value.getMenu().get(0).getMenus().get(0).getUrl());
+            else
+                value.setWelcome(infoValue.getAppHost());
+        }
+        // null 转换为 框架窗口
+        for (Menu menu : value.getNavbar()) {
+            if (menu.getTarget() == null) {
+                menu.setTarget("_view");
+            }
+        }
+        for (MenuGroup menuGroup : value.getMenu()) {
+            if (menuGroup != null) {
+                for (Menu menu : menuGroup.getMenus()) {
+                    if (menu.getTarget() == null) {
+                        menu.setTarget("_view");
+                    }
+                }
+            }
         }
         return value;
     }
@@ -62,7 +80,7 @@ public class AppManageConfig {
      */
     private List<Menu> defaultMenus() {
         List<Menu> defaultMenus = new ArrayList<>();
-        defaultMenus.add(new Menu("关于应用", "/core"));
+        defaultMenus.add(new Menu("关于应用", "/linling/core"));
         defaultMenus.add(new Menu("API接口", infoValue.getAppApiHost()));
         defaultMenus.add(new Menu("SQL监控", infoValue.getAppSQLManageHost()));
         return defaultMenus;

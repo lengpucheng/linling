@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "异常请求")
 @ControllerAdvice
 @RestController
-@RequestMapping("/core/error")
+@RequestMapping("/linling/core/error")
 public class AppException {
     /**
      * 权限不足

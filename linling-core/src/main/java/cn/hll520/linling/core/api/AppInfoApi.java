@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(tags = "APP信息")
 @RestController
-@RequestMapping("/core/appInfo")
+@RequestMapping("/linling/core/appInfo")
 public class AppInfoApi {
 
     private final AppInfoValue value;

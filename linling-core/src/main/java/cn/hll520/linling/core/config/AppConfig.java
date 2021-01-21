@@ -12,9 +12,9 @@ public class AppConfig {
     /**
      * APP 信息首页
      */
-    public final static String APP_INFO_HOST = "/core";
+    public final static String APP_INFO_HOST = "/linling/core";
     /**
      * 应用后台首页
      */
-    public final static String APP_MANAGE_HOST = "/core/manage";
+    public final static String APP_MANAGE_HOST = "/linling/core/manage";
 }

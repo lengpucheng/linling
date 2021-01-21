@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /**
- * 描述：
+ * 描述： 菜单
  *
  * @author lpc lpc@hll520.cn
  * @version 1.0  2021-01-21-15:24

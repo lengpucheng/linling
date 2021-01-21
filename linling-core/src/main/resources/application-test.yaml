@@ -1,0 +1,102 @@
+server:
+  port: 80
+
+# spring
+spring:
+  # 数据库源地址
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/cn_hll520_love?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # druid 连接池
+    druid:
+      max-active: 30 # 最大连接数
+      min-idle: 5    # 最小连接量
+      max-wait: 10000 # 最大等待时间 10s
+      validation-query: SELECT 'linling' # 8小时空闲查询一次避免连接关闭
+      time-between-eviction-runs-millis: 60000 # 空闲连接检查间隔
+      min-evictable-idle-time-millis: 300000  # 空闲阈值
+  # mvc
+  mvc:
+    static-path-pattern: /** # 静态资源前缀 默认/** 表示没有
+
+# Mybatis
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml  # 扫描地址  classpath* 表示所有模块的资源目录
+
+# linling
+linling:
+  core:
+    # app info
+    app:
+      app-version: 应用版本
+      app-description: 应用说明\n 例如：这是LinlingCore的测试配置模板文件，包含了所有可以自定义设置的选项
+      app-info-host: /app
+      app-api-host: /swagger-ui/index.html  # api 页面地址
+      app-s-q-l-manage-host: /druid/login.html # 监管中心地址
+      app-core-manage-host: /linling/core # 管理后台
+      # 作者信息
+      app-author:
+        name: lengpucheng
+        email: lpc@hll520.cn
+        web-site: http://hll520.cn
+        web-name: 吾之爱
+        github-url: https://github.com/lengpucheng
+    # api page 配置
+    swagger:
+      enable: true  # 启用swagger
+      version: API版本
+      url: /
+      description: API接口的描述说明
+      title: API接口标题
+      base-package-path: cn.hll520.linling # api 扫描的包路径
+    # sql 监控 配置
+    sql:
+      username: admin
+      password: admin123
+      rest-enable: false # 不启用恢复按钮
+      url-patterns: '/*' # sql 扫描路径
+    # 管理 后台 配置
+    manage:
+      title: Core-Test
+      welcome: http://hll520.cn # 一进入欢迎页面地址
+      top:
+        url: '#'
+        name: Linling-CORE
+        target: _bank #打开方式
+      # 头部导航
+      navbar:
+        - name: LinLing
+          url: http://hll520.cn
+        - name: 百度
+          url: http://baidu.com/
+        - name: 360
+          url: http://so.com
+          target: _bank
+        - name: API
+          url: /swagger-ui/index.html
+        - name: SQL监管
+          url: /druid/login.html
+      # 左侧导航
+      menu:
+        # 一个组
+        - name: linling
+          menus:
+            - name: Core
+              url: /linling/core
+            - name: Manage
+              url: /linling/core/manage
+        - name: video
+          menus:
+            - name: BILIBILI
+              url: http://bilibili.com
+            - name: YOUKU
+              url: http://youku.com
+        - name: Linling-core
+          menus:
+            - name: API文档
+              url: /swagger-ui/index.html
+              target: _bank
+            - name: SQL监管
+              url: /druid/login.html

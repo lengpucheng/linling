@@ -1,7 +1,7 @@
 package cn.hll520.linling.core.exception;
 
 /**
- * 描述：
+ * 描述：通用的 响应异常
  *
  * @author lpc lpc@hll520.cn
  * @version 1.0  2020-12-29-20:12

@@ -18,7 +18,7 @@ public class AppInfoValue {
     /**
      * App info 页面地址
      */
-    public String appInfoHost = "/core";
+    public String appInfoHost = "/linling/core";
     /**
      * 应用名称
      */
@@ -43,6 +43,10 @@ public class AppInfoValue {
      * App Druid SQL 管理页面地址
      */
     private String appSQLManageHost = "/druid/login.html";
+    /**
+     * App Linling Core 管理后台
+     */
+    private String appCoreManageHost = "/linling/core/manage";
     /**
      * 作者
      */

@@ -16,6 +16,10 @@ import java.util.List;
 @Data
 public class MenuGroup {
     /**
+     * id 唯一标识
+     */
+    private long id = System.currentTimeMillis();
+    /**
      * 组名称
      */
     private String name;
