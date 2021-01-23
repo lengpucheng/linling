@@ -45,7 +45,7 @@ public class ResultUtils {
      * @return 带为登录的结果
      */
     public static Result noLogin(String msg) {
-        return new Result(false, 500, "请先登录！" + (msg == null ? "" : msg), null);
+        return new Result(false, 110, "请先登录！" + (msg == null ? "" : msg), null);
     }
 
     /**
@@ -55,7 +55,7 @@ public class ResultUtils {
      * @return 带没有权限的结果
      */
     public static Result noPermit(String msg) {
-        return new Result(false, 400, "没有权限！" + (msg == null ? "" : msg), null);
+        return new Result(false, 120, "没有权限！" + (msg == null ? "" : msg), null);
     }
 
 

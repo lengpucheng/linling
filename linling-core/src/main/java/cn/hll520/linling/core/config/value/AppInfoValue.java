@@ -16,10 +16,6 @@ import org.springframework.stereotype.Component;
 @Data
 public class AppInfoValue {
     /**
-     * App info 页面地址
-     */
-    public String appInfoHost = "/linling/core";
-    /**
      * 应用名称
      */
     private String appName = "Linling Core";
@@ -36,6 +32,18 @@ public class AppInfoValue {
      */
     private String appHost = "/";
     /**
+     * App info 页面地址
+     */
+    private String appInfoHost = "/linling/core";
+    /**
+     * App login 页
+     */
+    private String appLoginHost = "/linling/login";
+    /**
+     * App Linling Core 管理后台
+     */
+    private String appCoreManageHost = "/linling/manage";
+    /**
      * App Swagger Api页面地址
      */
     private String appApiHost = "/swagger-ui/index.html";
@@ -43,10 +51,6 @@ public class AppInfoValue {
      * App Druid SQL 管理页面地址
      */
     private String appSQLManageHost = "/druid/login.html";
-    /**
-     * App Linling Core 管理后台
-     */
-    private String appCoreManageHost = "/linling/core/manage";
     /**
      * 作者
      */

@@ -32,10 +32,11 @@ linling:
     app:
       app-version: 应用版本
       app-description: 应用说明\n 例如：这是LinlingCore的测试配置模板文件，包含了所有可以自定义设置的选项
-      app-info-host: /app
+      app-info-host: /linling/core
       app-api-host: /swagger-ui/index.html  # api 页面地址
       app-s-q-l-manage-host: /druid/login.html # 监管中心地址
-      app-core-manage-host: /linling/core # 管理后台
+      app-core-manage-host: /linling/manage # 管理后台
+      app-login-host: /linling/login # 登录页面
       # 作者信息
       app-author:
         name: lengpucheng
@@ -43,6 +44,13 @@ linling:
         web-site: http://hll520.cn
         web-name: 吾之爱
         github-url: https://github.com/lengpucheng
+    # 安全认证相关
+    safety:
+      # 记住我
+      remember:
+        enable: true
+        remember-path: /
+        remember-cookie-name: linling-core-mind
     # api page 配置
     swagger:
       enable: true  # 启用swagger
@@ -86,7 +94,7 @@ linling:
             - name: Core
               url: /linling/core
             - name: Manage
-              url: /linling/core/manage
+              url: /linling/manage
         - name: video
           menus:
             - name: BILIBILI

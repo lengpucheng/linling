@@ -16,5 +16,9 @@ public class AppConfig {
     /**
      * 应用后台首页
      */
-    public final static String APP_MANAGE_HOST = "/linling/core/manage";
+    public final static String APP_MANAGE_HOST = "/linling/manage";
+    /**
+     * 登录页面
+     */
+    public final static String APP_LOGIN_HOST = "/linling/login";
 }

@@ -4,7 +4,10 @@ import cn.hll520.linling.core.object.Result;
 import cn.hll520.linling.core.util.ResultUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,9 +29,9 @@ public class AppException {
      * @param e 错误信息
      * @return 错误提示
      */
-    @ApiOperation("400错误未授权")
-    @RequestMapping("/400")
-//    @ExceptionHandler(UnauthorizedException.class)
+    @ApiOperation("120错误未授权")
+    @RequestMapping("/120")
+    @ExceptionHandler(UnauthorizedException.class)
     public Result handleShiroException(Exception e) {
         return ResultUtils.noPermit("没有权限\n" + e.getMessage());
     }
@@ -39,9 +42,9 @@ public class AppException {
      * @param e 错误信息
      * @return 错误提示
      */
-    @ApiOperation("400错误未登录")
-    @RequestMapping("/500")
-//    @ExceptionHandler(AuthorizationException.class)
+    @ApiOperation("110错误未登录")
+    @RequestMapping("/110")
+    @ExceptionHandler(AuthorizationException.class)
     public Result AuthorizationException(Exception e) {
         return ResultUtils.noLogin("请先登录\n" + e.getMessage());
     }
