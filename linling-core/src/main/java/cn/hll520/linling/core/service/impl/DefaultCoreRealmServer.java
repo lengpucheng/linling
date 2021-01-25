@@ -1,8 +1,8 @@
 package cn.hll520.linling.core.service.impl;
 
-import cn.hll520.linling.core.object.safety.Promise;
-import cn.hll520.linling.core.object.safety.Role;
-import cn.hll520.linling.core.object.safety.User;
+import cn.hll520.linling.core.object.safety.PromiseBase;
+import cn.hll520.linling.core.object.safety.RoleBase;
+import cn.hll520.linling.core.object.safety.UserBase;
 import cn.hll520.linling.core.service.LoginServer;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -40,17 +40,17 @@ public class DefaultCoreRealmServer extends AuthorizingRealm {
         SimpleAuthorizationInfo safe = new SimpleAuthorizationInfo();
         // 获取当前用户
         Subject subject = SecurityUtils.getSubject();
-        User user = (User) subject.getPrincipal();
-        List<Role> roles = loginServer.checkRole(user);
+        UserBase user = (UserBase) subject.getPrincipal();
+        List<RoleBase> roles = loginServer.checkRole(user);
         // 添加身份
         if (roles != null) {
-            for (Role role : roles) {
+            for (RoleBase role : roles) {
                 if (role != null) {
                     safe.addRole(role.getRoleCode());
                     // 添加权限
-                    List<Promise> promises = loginServer.checkPromise(role);
+                    List<PromiseBase> promises = loginServer.checkPromise(role);
                     if (promises != null) {
-                        for (Promise promise : promises) {
+                        for (PromiseBase promise : promises) {
                             safe.addStringPermission(promise.getPromiseCode());
                         }
                     }
@@ -80,7 +80,7 @@ public class DefaultCoreRealmServer extends AuthorizingRealm {
             return null;
         }
         // 调用login 方法
-        User userinfo = loginServer.login(new User(userToken.getUsername()));
+        UserBase userinfo = loginServer.login(new UserBase(userToken.getUsername()));
         // 判断密码
         // 参数一 是返回会 login 方法的数据  ， 参数二 是数据库的密码  参数三 是 shiro 的名字
         // shiro 会 自动 判断 密码是否一致

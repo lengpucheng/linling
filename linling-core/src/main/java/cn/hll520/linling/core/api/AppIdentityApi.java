@@ -1,7 +1,7 @@
 package cn.hll520.linling.core.api;
 
 import cn.hll520.linling.core.object.Result;
-import cn.hll520.linling.core.object.safety.User;
+import cn.hll520.linling.core.object.safety.UserBase;
 import cn.hll520.linling.core.util.ResultUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,14 +29,14 @@ public class AppIdentityApi {
 
     @ApiOperation("获取信息")
     @GetMapping
-    public Result<User> identity() {
+    public Result<UserBase> identity() {
         try {
             Subject subject = SecurityUtils.getSubject();
             Object principal = subject.getPrincipal();
             if (principal == null) {
                 return ResultUtils.noLogin("未登录！");
             }
-            return ResultUtils.success((User) principal);
+            return ResultUtils.success((UserBase) principal);
         } catch (Exception e) {
             return ResultUtils.error(e);
         }
@@ -44,7 +44,7 @@ public class AppIdentityApi {
 
     @ApiOperation(value = "登录", notes = "必须具有username和password")
     @PostMapping("/login")
-    public Result<User> login(User user, boolean remember) {
+    public Result<UserBase> login(UserBase user, boolean remember) {
         try {
             if (user == null || user.getUsername() == null || user.getPassword() == null)
                 return ResultUtils.fail(user, "用户名和密码不能为空");
@@ -53,7 +53,7 @@ public class AppIdentityApi {
             Subject subject = SecurityUtils.getSubject();
             subject.login(token);
             // 成功后返回信息
-            return ResultUtils.success((User) subject.getPrincipal());
+            return ResultUtils.success((UserBase) subject.getPrincipal());
         } catch (UnknownAccountException e) {
             return ResultUtils.fail(user, "用户不存在!\n");
         } catch (IncorrectCredentialsException e) {

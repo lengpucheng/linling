@@ -1,1 +1,113 @@
 LinLing Core is a SpringBoot framework that have many modules and complete SQL monitor and API document
+
+# 引用和打包
+
+## 1.引用
+
+在引用项目中的pom文件加入如下内容 1、对Linling的父项目依赖
+
+```xml
+
+<parent>
+    <artifactId>linling</artifactId>
+    <groupId>cn.hll520.linling</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+</parent>
+```
+
+2、引入需要的包(以Core为例)
+
+```xml
+
+<dependencies>
+    <!-- 核心 -->
+    <dependency>
+        <groupId>cn.hll520.linling</groupId>
+        <artifactId>linling-core</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+```
+
+## 2.打包
+
+在Pom文件中加入如下构建插件，点击package进行项目打包后的包才能直接运行，否则会报找不到清单文件错误
+
+```xml
+ <!-- 构建 -->
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <!-- 编译lombok -->
+                <excludes>
+                    <exclude>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                    </exclude>
+                </excludes>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+# 使用方法
+
+## 1.启动类
+
+务必加上以下三个注解，并按`{}`中的格式加入当前项目/模块包路径，使得SpringIOC容器可以扫描到Linling的配置类服务
+
+```java
+
+@SpringBootApplication(scanBasePackages = {"cn.hll520.linling"})
+@ComponentScan({"cn.hll520.linling"})
+@MapperScan({"cn.hll520.linling.*.mapper"})
+public class CoreApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(CoreApplication.class, args);
+    }
+}
+```
+
+## 2.登录验证
+
+实现`LoginServer` 接口，并加上`@Primary`注解，否则会和默认的实现类冲突
+
+```java
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+@Primary
+@Service
+public class DefaultLoginServer implements LoginServer {
+
+}
+```
+
+## 3.Swagger配置
+
+在`linling.core.swagger.base-package-path`中设置需要扫描的包路径即可
+
+# 待解决
+
+## 1.Core问题
+
+1. 部分页面页面可以设置为配置文件指定
+2. Shiro过滤器中的Map在配置文件中配置
+3. 管理后台的响应式页面
+4. 可以在配置文件中继续鉴权
+
+## 2.待完成模块
+
+1. Log -- 日志
+2. Media -- 媒体

@@ -8,28 +8,27 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 描述：身份
+ * 描述： 权限基类
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-01-23-13:03
- * @since 2021-01-23-13:03
+ * @version 1.0  2021-01-23-13:06
+ * @since 2021-01-23-13:06
  */
 @Builder
 @Data
-public class Role implements Serializable {
+public class PromiseBase implements Serializable {
     /**
      * 版本
      */
     private static final long serialVersionUID = 1L;
-
     /**
-     * 身份id
+     * 权限id
      */
-    private int rid;
+    private Integer pid;
     /**
-     * 身份名称
+     * 权限名称
      */
-    private String roleName;
+    private String promiseName;
     /**
      * 说明
      */
@@ -39,12 +38,11 @@ public class Role implements Serializable {
      */
     private Date createTime;
     /**
-     * 身份ID代码
+     * 权限编码
      */
-    private String roleCode;
+    private String promiseCode;
 
     @Tolerate
-    public Role() {
+    public PromiseBase() {
     }
-
 }

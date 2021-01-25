@@ -1,8 +1,8 @@
 package cn.hll520.linling.core.service.impl;
 
-import cn.hll520.linling.core.object.safety.Promise;
-import cn.hll520.linling.core.object.safety.Role;
-import cn.hll520.linling.core.object.safety.User;
+import cn.hll520.linling.core.object.safety.PromiseBase;
+import cn.hll520.linling.core.object.safety.RoleBase;
+import cn.hll520.linling.core.object.safety.UserBase;
 import cn.hll520.linling.core.service.LoginServer;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class DefaultLoginServer implements LoginServer {
     @Override
-    public User login(User user) {
+    public UserBase login(UserBase user) {
         if ("admin".equals(user.getUsername())) {
             user.setUid(0);
             user.setPassword("admin");
@@ -29,26 +29,39 @@ public class DefaultLoginServer implements LoginServer {
     }
 
     @Override
-    public List<Role> checkRole(User user) {
+    public List<RoleBase> checkRole(UserBase user) {
         if (user == null) {
             return null;
         }
-        List<Role> roles = new ArrayList<>();
+        List<RoleBase> roles = new ArrayList<>();
         if ("admin".equals(user.getUsername()) && 0 == user.getUid()) {
-            roles.add(Role.builder().rid(0).roleName("admin").roleCode("admin")
+            roles.add(RoleBase.builder().rid(0).roleName("admin").roleCode("admin")
                     .createTime(new Date()).build());
         }
         return roles;
     }
 
     @Override
-    public List<Promise> checkPromise(Role role) {
+    public List<PromiseBase> checkPromise(RoleBase role) {
         if (role == null) {
             return null;
         }
-        List<Promise> promises = new ArrayList<>();
+        List<PromiseBase> promises = new ArrayList<>();
         if ("admin".equals(role.getRoleCode())) {
-            promises.add(Promise.builder().pid(0).promiseName("admin")
+            promises.add(PromiseBase.builder().pid(0).promiseName("admin")
+                    .promiseCode("all").createTime(new Date()).build());
+        }
+        return promises;
+    }
+
+    @Override
+    public List<PromiseBase> checkPromise(UserBase user) {
+        if (user == null) {
+            return null;
+        }
+        List<PromiseBase> promises = new ArrayList<>();
+        if ("admin".equals(user.getUsername())) {
+            promises.add(PromiseBase.builder().pid(0).promiseName("admin")
                     .promiseCode("all").createTime(new Date()).build());
         }
         return promises;

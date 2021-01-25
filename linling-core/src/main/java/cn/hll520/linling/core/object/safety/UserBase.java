@@ -6,14 +6,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 描述： 用户身份认证
+ * 描述： 用户身份认证 基类
  *
  * @author lpc lpc@hll520.cn
  * @version 1.0  2021-01-23-12:58
  * @since 2021-01-23-12:58
  */
 @Data
-public class User implements Serializable {
+public class UserBase implements Serializable {
     /**
      * 版本
      */
@@ -21,7 +21,7 @@ public class User implements Serializable {
     /**
      * 用户ID
      */
-    private int uid;
+    private Integer uid;
     /**
      * 用户名
      */
@@ -35,10 +35,10 @@ public class User implements Serializable {
      */
     private Date createTime;
 
-    public User() {
+    public UserBase() {
     }
 
-    public User(String username) {
+    public UserBase(String username) {
         this();
         this.username = username;
     }
@@ -49,7 +49,7 @@ public class User implements Serializable {
      * @param username 用户名
      * @param password 密码
      */
-    public User(String username, String password) {
+    public UserBase(String username, String password) {
         this(username);
         this.password = password;
     }
