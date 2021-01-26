@@ -13,7 +13,7 @@ import java.util.List;
  * @version 1.0  2021-01-23-13:10
  * @since 2021-01-23-13:10
  */
-public interface LoginServer<T extends UserBase> {
+public interface ILoginServer<T extends UserBase> {
     /**
      * 登录接口
      *

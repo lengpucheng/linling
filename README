@@ -98,14 +98,44 @@ public class DefaultLoginServer implements LoginServer {
 
 在`linling.core.swagger.base-package-path`中设置需要扫描的包路径即可
 
+## 4.shiro 过滤
+
+在`linling.core.safety.filter`中进行配置,为`List<Filter>` 只有 URL 和 ROLE 两个参数，按顺序配置
+
+```yaml
+linling:
+  core:
+    safety:
+      filter:
+        - url: /unok
+          rule: user
+        - url: /ok
+          rule: anon
+```
+
+或实现 `IFilterUrlServer` 接口 并加上`@Primary`注解也可
+
+```java
+
+@Primary
+@Service
+public class FilterUrlServer implements IFilterUrlServer {
+    @Override
+    public Map<String, String> filterUrl(Map<String, String> filter, ShiroInfoValue value) {
+        /* code */
+    }
+        return filter
+}
+}
+```
+
 # 待解决
 
 ## 1.Core问题
 
 1. 部分页面页面可以设置为配置文件指定
-2. Shiro过滤器中的Map在配置文件中配置
-3. 管理后台的响应式页面
-4. 可以在配置文件中继续鉴权
+2. 管理后台的响应式页面
+3. 可以在配置文件中继续鉴权
 
 ## 2.待完成模块
 

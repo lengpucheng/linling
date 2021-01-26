@@ -3,7 +3,7 @@ package cn.hll520.linling.core.service.impl;
 import cn.hll520.linling.core.object.safety.PromiseBase;
 import cn.hll520.linling.core.object.safety.RoleBase;
 import cn.hll520.linling.core.object.safety.UserBase;
-import cn.hll520.linling.core.service.LoginServer;
+import cn.hll520.linling.core.service.ILoginServer;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -26,7 +26,7 @@ import java.util.List;
 @Component
 public class DefaultCoreRealmServer extends AuthorizingRealm {
     @Autowired
-    private LoginServer loginServer;
+    private ILoginServer loginServer;
 
     /**
      * 执行登录/授权逻辑

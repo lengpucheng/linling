@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * 描述： 安全配置类
@@ -44,16 +44,16 @@ public class ShiroInfoValue {
      * <p>
      * ssl         无参,表示安全的URL请求,协议为https
      */
-    private Map<String, String> filter = null;
+    private List<FilterUrl> filter = null;
 
     /**
      * 未登录时跳转的登录页面
      */
-    private String unLoginUrl = "/linling/core/error/110";
+    private String unLoginUrl = "/linling/error/110";
     /**
      * 权限不足时跳转的登录页面
      */
-    private String unAuthorizedUrl = "/linling/core/error/120";
+    private String unAuthorizedUrl = "/linling/error/120";
     /**
      * 记住我功能
      */
@@ -121,5 +121,32 @@ public class ShiroInfoValue {
          * remember Base64编码key
          */
         private String rememberBase64Encode = "4AvVhmFLUs0KTA3Kprsdag==";
+    }
+
+    @Data
+    public static class FilterUrl {
+        /**
+         * 管理的地址 不可为null
+         */
+        private String url;
+        /**
+         * 规则，默认 anon
+         * anon             无参,表示可匿名使用,可以理解为匿名用户或游客
+         * <p>
+         * authc       无参,表示需认证才能使用
+         * <p>
+         * user ： 需要登录才可以访问，记住我起作用
+         * <p>
+         * role[admin] : 必须得到角色权限才可以访问（**角色授权**）
+         * <p>
+         * roles[admin]  参数可写多个,多个时必须加上引号,且参数之间用逗号分割,如：/admins/user/**=roles["admin,guest"]。当有多个参数时必须每个参数都通过才算通过,相当于hasAllRoles()方法
+         * <p>
+         * perms[user:add:*]  参数可写多个,多参时必须加上引号,且参数之间用逗号分割,如/admins/user/**=perms["user:add:*,user:modify:*"]。当有多个参数时必须每个参数都通过才算通过,相当于isPermitedAll()方法
+         * <p>
+         * authcBasic  无参,表示httpBasic认证
+         * <p>
+         * ssl         无参,表示安全的URL请求,协议为https
+         */
+        private String rule = "anon";
     }
 }

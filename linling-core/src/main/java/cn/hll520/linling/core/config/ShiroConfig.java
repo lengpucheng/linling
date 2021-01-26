@@ -1,6 +1,7 @@
 package cn.hll520.linling.core.config;
 
 import cn.hll520.linling.core.config.value.ShiroInfoValue;
+import cn.hll520.linling.core.service.IFilterUrlServer;
 import cn.hll520.linling.core.service.impl.DefaultCoreRealmServer;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.codec.Base64;
@@ -30,9 +31,12 @@ public class ShiroConfig {
 
     private final DefaultCoreRealmServer realm;
 
-    public ShiroConfig(ShiroInfoValue value, DefaultCoreRealmServer realm) {
+    private final IFilterUrlServer filterUrlServer;
+
+    public ShiroConfig(ShiroInfoValue value, DefaultCoreRealmServer realm, IFilterUrlServer filterUrlServer) {
         this.value = value;
         this.realm = realm;
+        this.filterUrlServer = filterUrlServer;
     }
 
     /**
@@ -46,18 +50,15 @@ public class ShiroConfig {
         // 配置安全管理器
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         // 配置拦截
-        Map<String, String> filterMap = value.getFilter();
-        // 如果为null 使用默认
-        if (filterMap == null) {
-            filterMap = new LinkedHashMap<>();
-            // 放行pass -- 要在拦截前面  ** 才是所有  *是当前
-            filterMap.put("/linling/core/identity/**", "anon");
-            filterMap.put("/linling/core/appInfo/**", "anon");
-            filterMap.put("/linling/core", "anon");  //info 页
-            filterMap.put("/linling/core/**", "user");
-        }
+        Map<String, String> filterMap = new LinkedHashMap<>();
+        // 放行pass -- 要在拦截前面  ** 才是所有  *是当前
+        filterMap.put("/linling/core/identity/**", "anon");
+        filterMap.put("/linling/core/appInfo/**", "anon");
+        filterMap.put("/linling/core", "anon");  //info 页
+        filterMap.put("/linling/core/**", "user");
+        Map<String, String> map = filterUrlServer.filterUrl(filterMap, value);
         // 设置
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         // 添加未登录跳转路径
         shiroFilterFactoryBean.setLoginUrl(value.getUnLoginUrl());
         // 添加未授权跳转路径

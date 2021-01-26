@@ -51,6 +51,12 @@ linling:
         enable: true
         remember-path: /
         remember-cookie-name: linling-core-mind
+      # 路径过滤
+      filter:
+        - url: /unok
+          rule: user
+        - url: /ok
+          rule: anon
     # api page 配置
     swagger:
       enable: true  # 启用swagger

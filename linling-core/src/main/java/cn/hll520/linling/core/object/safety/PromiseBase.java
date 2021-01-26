@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.experimental.Tolerate;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 描述： 权限基类
@@ -22,21 +21,9 @@ public class PromiseBase implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     /**
-     * 权限id
-     */
-    private Integer pid;
-    /**
      * 权限名称
      */
     private String promiseName;
-    /**
-     * 说明
-     */
-    private String memo;
-    /**
-     * 创建时间
-     */
-    private Date createTime;
     /**
      * 权限编码
      */

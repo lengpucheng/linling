@@ -21,7 +21,6 @@
         <dependency>
             <groupId>cn.hll520.linling</groupId>
             <artifactId>linling-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

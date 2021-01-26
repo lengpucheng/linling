@@ -3,7 +3,6 @@ package cn.hll520.linling.core.object.safety;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 描述： 用户身份认证 基类
@@ -19,10 +18,6 @@ public class UserBase implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     /**
-     * 用户ID
-     */
-    private Integer uid;
-    /**
      * 用户名
      */
     private String username;
@@ -30,10 +25,6 @@ public class UserBase implements Serializable {
      * 密码
      */
     private String password;
-    /**
-     * 创建时间
-     */
-    private Date createTime;
 
     public UserBase() {
     }

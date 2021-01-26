@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.experimental.Tolerate;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 描述：身份基类
@@ -21,23 +20,10 @@ public class RoleBase implements Serializable {
      * 版本
      */
     private static final long serialVersionUID = 1L;
-
-    /**
-     * 身份id
-     */
-    private Integer rid;
     /**
      * 身份名称
      */
     private String roleName;
-    /**
-     * 说明
-     */
-    private String memo;
-    /**
-     * 创建时间
-     */
-    private Date createTime;
     /**
      * 身份ID代码
      */
