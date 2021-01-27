@@ -21,6 +21,10 @@ public class PromiseBase implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     /**
+     * 权限pid
+     */
+    private String pid;
+    /**
      * 权限名称
      */
     private String promiseName;

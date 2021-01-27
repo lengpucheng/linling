@@ -21,6 +21,10 @@ public class RoleBase implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     /**
+     * 身份rid
+     */
+    private Integer rid;
+    /**
      * 身份名称
      */
     private String roleName;

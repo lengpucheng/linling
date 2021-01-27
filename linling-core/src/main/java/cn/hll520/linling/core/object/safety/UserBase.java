@@ -18,6 +18,10 @@ public class UserBase implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     /**
+     * 用户uid
+     */
+    private Integer uid;
+    /**
      * 用户名
      */
     private String username;
