@@ -17,7 +17,7 @@
     <!-- linling 项目info -->
     <groupId>cn.hll520.linling</groupId>
     <artifactId>linling</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>linling</name>
     <description>Linling FrameWork</description>
     <!-- JKD 版本 -->
@@ -31,7 +31,7 @@
             <dependency>
                 <groupId>cn.hll520.linling</groupId>
                 <artifactId>linling-core</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>1.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
