@@ -1,4 +1,4 @@
-package cn.hll520.linling.core.config.value;
+package cn.hll520.linling.core.autovalue;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

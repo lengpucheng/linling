@@ -30,19 +30,19 @@
                         Linling</h3></a>
                     <nav>
                         <ul class="nav masthead-nav">
-                            <li class="active"><a href="/linling/core" th:href="${app.getAppInfoHost()}">应用信息</a></li>
+                            <li class="active"><a href="/linling/core" th:href="${host.getAppInfoHost()}">应用信息</a></li>
                             <li><a href="/swagger-ui/index.html" id="APIHost"
-                                   th:href="${app.getAppApiHost()}">
+                                   th:href="${host.getAppApiHost()}">
                                 API查询
                             </a>
                             </li>
                             <li><a href="/druid/login.html" id="SQLHost"
-                                   th:href="${app.getAppSQLManageHost()}">
+                                   th:href="${host.getAppSQLManageHost()}">
                                 SQL监控
                             </a>
                             </li>
                             <li><a href="/linling/manage" id="CoreManage"
-                                   th:href="${app.getAppCoreManageHost()}">
+                                   th:href="${host.getAppCoreManageHost()}">
                                 管理后台
                             </a>
                             </li>
@@ -70,7 +70,7 @@
                     <p></p>
                     <button class="btn btn-lg btn-primary btn-block" onclick="doLogin(
                                 $('#userName').val(), $('#passWord').val(),
-                                $('#remember').is(':checked'),'/linling/manage'
+                                $('#remember').is(':checked'),'/linling/manage.html'
                                 );"
                             style="margin-top: 30px">
                         登 录

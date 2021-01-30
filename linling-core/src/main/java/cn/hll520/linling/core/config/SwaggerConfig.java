@@ -1,7 +1,7 @@
 package cn.hll520.linling.core.config;
 
-import cn.hll520.linling.core.config.value.AppInfoValue;
-import cn.hll520.linling.core.config.value.SwaggerInfoValue;
+import cn.hll520.linling.core.autovalue.AppInfoValue;
+import cn.hll520.linling.core.autovalue.SwaggerInfoValue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;

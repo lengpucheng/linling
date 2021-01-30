@@ -1,6 +1,6 @@
 package cn.hll520.linling.core.service.impl;
 
-import cn.hll520.linling.core.config.value.ShiroInfoValue;
+import cn.hll520.linling.core.autovalue.ShiroInfoValue;
 import cn.hll520.linling.core.service.IFilterUrlServer;
 import org.springframework.stereotype.Service;
 

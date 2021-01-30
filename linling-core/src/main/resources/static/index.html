@@ -54,18 +54,18 @@
 
         /* load app info */
         function loadAppInfo(app) {
-            $("#appName").html(app.appName);
+            $("#appName").html(app.infos.appName);
             $("#appInfoName").html(`
              Linling Core
                         <span class="label label-info" style="vertical-align: super;font-size: 15px" id="appVersion">${app.appVersion}</span>
             `);
-            $("#appInfo").html(app.appDescription);
-            $("#appHost").attr("href", app.appHost);
-            $("#appHostUrl").attr("href", app.appHost);
-            $("#APIHost").attr("href", app.appApiHost);
-            $("#SQLHost").attr("href", app.appSQLManageHost);
+            $("#appInfo").html(app.infos.appDescription);
+            $("#appHost").attr("href", app.infos.appHost);
+            $("#appHostUrl").attr("href", app.infos.appHost);
+            $("#APIHost").attr("href", app.hosts.appApiHost);
+            $("#SQLHost").attr("href", app.hosts.appSQLManageHost);
             // 作者信息
-            let author = app.appAuthor;
+            let author = app.infos.appAuthor;
             $("#authorInfo").html(`
             <p>
             Power by
@@ -87,10 +87,10 @@
                     <a href="#" id="appHostUrl"><h3 class="masthead-brand" id="appName">LinlingCore</h3></a>
                     <nav>
                         <ul class="nav masthead-nav">
-                            <li class="active"><a href="/linling/core">应用信息</a></li>
+                            <li class="active"><a href="/linling/info.html">应用信息</a></li>
                             <li><a href="/swagger-ui/index.html" id="APIHost">API查询</a></li>
                             <li><a href="/druid/login.html" id="SQLHost">SQL监控</a></li>
-                            <li><a href="/linling/manage" id="CoreManage">管理后台</a></li>
+                            <li><a href="/linling/manage.html" id="CoreManage">管理后台</a></li>
                         </ul>
                     </nav>
                 </div>

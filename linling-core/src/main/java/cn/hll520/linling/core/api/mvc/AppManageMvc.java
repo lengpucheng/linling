@@ -1,6 +1,6 @@
 package cn.hll520.linling.core.api.mvc;
 
-import cn.hll520.linling.core.config.AppConfig;
+import cn.hll520.linling.core.autovalue.AppDefaultHostValue;
 import cn.hll520.linling.core.config.AppManageConfig;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @version 1.0  2021-01-21-15:35
  * @since 2021-01-21-15:35
  */
-@Api(tags = "LinLingCore")
+@Api(tags = "LinLingCoreMVC")
 @Controller
-@RequestMapping(AppConfig.APP_MANAGE_HOST)
+@RequestMapping(AppDefaultHostValue.appCoreManageHost)
 public class AppManageMvc {
 
     private final AppManageConfig manageConfig;

@@ -38,17 +38,17 @@
                         <ul class="nav masthead-nav">
                             <li class="active"><a href="#">应用信息</a></li>
                             <li><a href="/swagger-ui/index.html" id="APIHost"
-                                   th:href="${app.getAppApiHost()}">
+                                   th:href="${host.getAppApiHost()}">
                                 API查询
                             </a>
                             </li>
                             <li><a href="/druid/login.html" id="SQLHost"
-                                   th:href="${app.getAppSQLManageHost()}">
+                                   th:href="${host.getAppSQLManageHost()}">
                                 SQL监控
                             </a>
                             </li>
                             <li><a href="/linling/manage" id="CoreManage"
-                                   th:href="${app.getAppCoreManageHost()}">
+                                   th:href="${host.getAppCoreManageHost()}">
                                 管理后台
                             </a>
                             </li>

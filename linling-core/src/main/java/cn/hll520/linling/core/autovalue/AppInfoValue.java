@@ -1,4 +1,4 @@
-package cn.hll520.linling.core.config.value;
+package cn.hll520.linling.core.autovalue;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -31,26 +31,6 @@ public class AppInfoValue {
      * App Host
      */
     private String appHost = "/";
-    /**
-     * App info 页面地址
-     */
-    private String appInfoHost = "/linling/core";
-    /**
-     * App login 页
-     */
-    private String appLoginHost = "/linling/login";
-    /**
-     * App Linling Core 管理后台
-     */
-    private String appCoreManageHost = "/linling/manage";
-    /**
-     * App Swagger Api页面地址
-     */
-    private String appApiHost = "/swagger-ui/index.html";
-    /**
-     * App Druid SQL 管理页面地址
-     */
-    private String appSQLManageHost = "/druid/login.html";
     /**
      * 作者
      */

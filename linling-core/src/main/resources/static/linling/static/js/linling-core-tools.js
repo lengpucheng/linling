@@ -111,11 +111,11 @@ function getAppInfo() {
         });
     }
     // 若不存在则设置默认地址
-    if (appInfo.appLoginHost === null || appInfo.appLoginHost === undefined) {
-        appInfo.appLoginHost = "/linling/login";
+    if (appInfo.hosts.appLoginHost === null || appInfo.hosts.appLoginHost === undefined) {
+        appInfo.hosts.appLoginHost = "/linling/login.html";
     }
-    if (appInfo.appHost === null || appInfo.appHost === undefined) {
-        appInfo.appHost = "/";
+    if (appInfo.infos.appHost === null || appInfo.infos.appHost === undefined) {
+        appInfo.infos.appHost = "/";
     }
     return appInfo;
 }
@@ -197,7 +197,7 @@ function isLogin(success, fail) {
         if (fail !== null && fail !== undefined) {
             fail(new Result(false, 110, "未登录", null));
         } else {
-            window.location.href = getAppInfo().appLoginHost;
+            window.location.href = getAppInfo().hosts.appLoginHost;
         }
         return;
     }
@@ -211,7 +211,7 @@ function isLogin(success, fail) {
             if (fail !== null && fail !== undefined) {
                 fail(result);
             } else {
-                window.location.href = getAppInfo().appLoginHost;
+                window.location.href = getAppInfo().hosts.appLoginHost;
             }
             return;
         }
@@ -234,7 +234,7 @@ function doLogout() {
             return;
         }
         saveLocal("user", null);
-        window.location.href = getAppInfo().appLoginHost;
+        window.location.href = getAppInfo().hosts.appLoginHost;
     });
 }
 
@@ -322,7 +322,7 @@ function httpGoLogin(url, data, success, method, error) {
             // 并写入缓存
             saveLocal(TEMPORARY_BAN_URL);
             // 跳转登陆界面
-            window.location.href = getAppInfo().appLoginHost;
+            window.location.href = getAppInfo().hosts.appLoginHost;
             return;
         }
         // 递归回调

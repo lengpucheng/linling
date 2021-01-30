@@ -1,6 +1,6 @@
 package cn.hll520.linling.core.service;
 
-import cn.hll520.linling.core.config.value.ShiroInfoValue;
+import cn.hll520.linling.core.autovalue.ShiroInfoValue;
 
 import java.util.Map;
 

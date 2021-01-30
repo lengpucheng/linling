@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication(scanBasePackages = {"cn.hll520.linling"})
 @ComponentScan({"cn.hll520.linling"})
-@MapperScan({"cn.hll520.linling.*.mapper"})
+@MapperScan({"cn.hll520.linling.**.mapper"})
 public class CoreApplication {
     public static void main(String[] args) {
         SpringApplication.run(CoreApplication.class, args);

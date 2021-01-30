@@ -1,5 +1,9 @@
 LinLing Core is a SpringBoot framework that have many modules and complete SQL monitor and API document
 
+**设置linling.host可以配置相应的映射，同时`app-login-host`用于配置真实的登录地址**
+
+**AppInfo将返回一个MAP其中infos为appInfo,hosts为Host**
+
 # 引用和打包
 
 ## 1.引用
@@ -129,13 +133,74 @@ public class FilterUrlServer implements IFilterUrlServer {
 }
 ```
 
+# Manage菜单
+
+## 1.yaml
+
+可以使用yaml进行如下配置动态加载菜单
+
+```yaml
+      # 头部导航
+      navbar:
+        - name: LinLing
+          url: http://hll520.cn
+        - name: 百度
+          url: http://baidu.com/
+        - name: 360
+          url: http://so.com
+          target: _bank
+        - name: API
+          url: /api
+        - name: SQL监管
+          url: /sql
+      # 左侧导航
+      menu:
+        # 一个组
+        - name: linling
+          menus:
+            - name: Core
+              url: /info
+            - name: Manage
+              url: /manage
+        - name: video
+          menus:
+            - name: BILIBILI
+              url: http://bilibili.com
+            - name: YOUKU
+              url: http://youku.com
+```
+
+## 2. 接口
+
+可以实现`IManageServer`接口,并完成相应功能，需要加上`@primary`直接
+
+```java
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+@Service
+@Primary
+public class ManageServer implements IManageServer {
+
+    @Override
+    public List<MenuGroup> leftMenu(List<MenuGroup> menuGroups) {
+        return menuGroups;
+    }
+
+    @Override
+    public List<Menu> topMenu(List<Menu> menus) {
+        return menus;
+    }
+}
+
+```
+
 # 待解决
 
 ## 1.Core问题
 
-1. 部分页面页面可以设置为配置文件指定
-2. 管理后台的响应式页面
-3. 可以在配置文件中继续鉴权
+1. 管理后台的响应式页面
+2. 可以在配置文件中继续鉴权
 
 ## 2.待完成模块
 

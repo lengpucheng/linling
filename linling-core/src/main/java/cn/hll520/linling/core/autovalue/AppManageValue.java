@@ -1,4 +1,4 @@
-package cn.hll520.linling.core.config.value;
+package cn.hll520.linling.core.autovalue;
 
 import cn.hll520.linling.core.object.Menu;
 import cn.hll520.linling.core.object.MenuGroup;

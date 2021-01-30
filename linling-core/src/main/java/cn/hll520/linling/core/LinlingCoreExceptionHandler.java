@@ -1,6 +1,7 @@
 package cn.hll520.linling.core;
 
-import cn.hll520.linling.core.config.value.ShiroInfoValue;
+import cn.hll520.linling.core.autovalue.ShiroInfoValue;
+import cn.hll520.linling.core.util.PathUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthorizedException;
@@ -33,7 +34,7 @@ public class LinlingCoreExceptionHandler {
     @ExceptionHandler(UnauthorizedException.class)
     public String unPromise(Exception e) {
         log.error("出现错误{},未授权的访问！", e.getMessage());
-        return "redirect:" + value.getUnAuthorizedUrl();
+        return PathUtils.forward(value.getUnAuthorizedUrl());
     }
 
 
@@ -46,6 +47,6 @@ public class LinlingCoreExceptionHandler {
     @ExceptionHandler(AuthorizationException.class)
     public String unLogin(Exception e) {
         log.error("出现错误{},未登录的访问！", e.getMessage());
-        return "redirect:" + value.getUnLoginUrl();
+        return PathUtils.redirect(value.getUnLoginUrl());
     }
 }

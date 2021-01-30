@@ -1,9 +1,11 @@
 package cn.hll520.linling.core.config;
 
-import cn.hll520.linling.core.config.value.AppInfoValue;
-import cn.hll520.linling.core.config.value.AppManageValue;
+import cn.hll520.linling.core.autovalue.AppHostValue;
+import cn.hll520.linling.core.autovalue.AppInfoValue;
+import cn.hll520.linling.core.autovalue.AppManageValue;
 import cn.hll520.linling.core.object.Menu;
 import cn.hll520.linling.core.object.MenuGroup;
+import cn.hll520.linling.core.service.IManageServer;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,10 +22,15 @@ import java.util.List;
 public class AppManageConfig {
     private final AppManageValue value;
     private final AppInfoValue infoValue;
+    private final AppHostValue hostValue;
+    private final IManageServer manageServer;
 
-    public AppManageConfig(AppManageValue value, AppInfoValue infoValue) {
+    public AppManageConfig(AppManageValue value, AppInfoValue infoValue,
+                           AppHostValue hostValue, IManageServer manageServer) {
         this.value = value;
         this.infoValue = infoValue;
+        this.hostValue = hostValue;
+        this.manageServer = manageServer;
     }
 
     /**
@@ -32,29 +39,15 @@ public class AppManageConfig {
      * @return 后台配置
      */
     public AppManageValue getManage() {
-        if (value.getTitle() == null) {
-            value.setTitle(infoValue.getAppName() + "控制台");
-        }
-        if (value.getTop() == null) {
-            value.setTop(new Menu(value.getTitle(), infoValue.getAppHost()));
-        }
-        if (value.getNavbar() == null) {
-            value.setNavbar(defaultMenus());
-        }
-        if (value.getMenu() == null) {
-            List<MenuGroup> menuGroups = new ArrayList<>();
-            MenuGroup menuGroup = new MenuGroup();
-            menuGroup.setName("defaultMenu");
-            menuGroup.setMenus(defaultMenus());
-            menuGroups.add(menuGroup);
-            value.setMenu(menuGroups);
-        }
-        if (value.getWelcome() == null) {
-            if (value.getMenu().size() > 0 && value.getMenu().get(0).getMenus().size() > 0)
-                value.setWelcome(value.getMenu().get(0).getMenus().get(0).getUrl());
-            else
-                value.setWelcome(infoValue.getAppHost());
-        }
+        // 设置头部导航
+        List<Menu> navbar = value.getNavbar() == null ? defaultMenus() : value.getNavbar();
+        value.setNavbar(manageServer.topMenu(navbar));
+        // 右边导航
+        List<MenuGroup> menuGroups = value.getMenu() == null ? defaultGroupMenus() : value.getMenu();
+        value.setMenu(manageServer.leftMenu(menuGroups));
+        // 设置欢迎页
+        value.setWelcome(manageServer.welcome(value.getMenu(), value.getWelcome()));
+
         // null 转换为 框架窗口
         for (Menu menu : value.getNavbar()) {
             if (menu.getTarget() == null) {
@@ -70,6 +63,9 @@ public class AppManageConfig {
                 }
             }
         }
+
+        // 整体修改
+        manageServer.modify(value, infoValue, defaultMenus());
         return value;
     }
 
@@ -80,9 +76,24 @@ public class AppManageConfig {
      */
     private List<Menu> defaultMenus() {
         List<Menu> defaultMenus = new ArrayList<>();
-        defaultMenus.add(new Menu("关于应用", "/linling/core"));
-        defaultMenus.add(new Menu("API接口", infoValue.getAppApiHost()));
-        defaultMenus.add(new Menu("SQL监控", infoValue.getAppSQLManageHost()));
+        defaultMenus.add(new Menu("关于应用", hostValue.getAppInfoHost()));
+        defaultMenus.add(new Menu("API接口", hostValue.getAppApiHost()));
+        defaultMenus.add(new Menu("SQL监控", hostValue.getAppSQLManageHost()));
         return defaultMenus;
+    }
+
+    /**
+     * 默认菜单组
+     *
+     * @return 默认菜单组
+     */
+    private List<MenuGroup> defaultGroupMenus() {
+        ArrayList<MenuGroup> menuGroups = new ArrayList<>();
+        MenuGroup menuGroup = new MenuGroup();
+        menuGroup.setName("defaultMenu");
+        menuGroup.setMenus(defaultMenus());
+        menuGroups.add(menuGroup);
+        value.setMenu(menuGroups);
+        return menuGroups;
     }
 }

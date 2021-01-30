@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 1.0  2021-01-23-15:30
  * @since 2021-01-23-15:30
  */
-@Api(tags = "APP身份认证")
+@Api(tags = "服务认证")
 @RestController
 @RequestMapping("linling/identity")
 public class AppIdentityApi {

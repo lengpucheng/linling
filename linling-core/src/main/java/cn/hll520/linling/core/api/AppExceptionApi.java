@@ -1,6 +1,6 @@
 package cn.hll520.linling.core.api;
 
-import cn.hll520.linling.core.config.value.AppInfoValue;
+import cn.hll520.linling.core.autovalue.AppInfoValue;
 import cn.hll520.linling.core.object.Result;
 import cn.hll520.linling.core.util.ResultUtils;
 import io.swagger.annotations.Api;

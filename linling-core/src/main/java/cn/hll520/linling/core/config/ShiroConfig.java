@@ -1,6 +1,6 @@
 package cn.hll520.linling.core.config;
 
-import cn.hll520.linling.core.config.value.ShiroInfoValue;
+import cn.hll520.linling.core.autovalue.ShiroInfoValue;
 import cn.hll520.linling.core.service.IFilterUrlServer;
 import cn.hll520.linling.core.service.impl.DefaultCoreRealmServer;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
