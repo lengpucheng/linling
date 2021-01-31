@@ -6,6 +6,7 @@
     <modules>
         <module>linling-core</module>
         <module>linling-app</module>
+        <module>linling-core-code-generation</module>
     </modules>
     <!-- spring boot 父项目 -->
     <parent>
