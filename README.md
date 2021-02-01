@@ -10,7 +10,9 @@ LinLing Core is a SpringBoot framework that have many modules and complete SQL m
 
 ## 1.引用
 
-在引用项目中的pom文件加入如下内容 1、对Linling的父项目依赖
+在引用项目中的pom文件加入如下内容
+
+1、对Linling的父项目依赖
 
 ```xml
 
