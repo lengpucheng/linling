@@ -4,6 +4,8 @@ LinLing Core is a SpringBoot framework that have many modules and complete SQL m
 
 **AppInfo将返回一个MAP其中infos为appInfo,hosts为Host**
 
+**全量配置见Core中的application-test.yaml**
+
 # 引用和打包
 
 ## 1.引用

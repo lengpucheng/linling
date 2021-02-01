@@ -30,7 +30,6 @@ linling:
     app:
       app-version: 0.0.1-SNAPSHOT
       app-description: LinLing Core is a SpringBoot framework that have many modules and complete SQL monitor and API document
-      app-info-host: /app
     swagger:
       enable: true  # 启用swagger
     sql:
