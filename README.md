@@ -17,7 +17,7 @@ LinLing Core is a SpringBoot framework that have many modules and complete SQL m
 <parent>
     <artifactId>linling</artifactId>
     <groupId>cn.hll520.linling</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.2.0</version>
 </parent>
 ```
 
@@ -30,7 +30,7 @@ LinLing Core is a SpringBoot framework that have many modules and complete SQL m
     <dependency>
         <groupId>cn.hll520.linling</groupId>
         <artifactId>linling-core</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.2.0</version>
     </dependency>
 </dependencies>
 ```
