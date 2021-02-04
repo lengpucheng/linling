@@ -32,24 +32,24 @@ public class AppManageValue {
     private Menu top = null;
 
     /**
-     * 头部菜单
-     * <p> - name: menu1
-     * <p>   url: url
-     * <p>   target: target 默认为 _view
-     * <p> - name: menu2....
+     * 头部菜单</p>
+     * <p> - name: menu1</p>
+     * <p>   url: url</p>
+     * <p>   target: target 默认为 _view</p>
+     * <p> - name: menu2....</p>
      * <p>若为null 默认为 API接口、SQL监控和关于应用</p>
      */
     private List<Menu> navbar = null;
 
     /**
      * 左侧分组菜单 {@code List<menu> 是菜单集} 外部为分组
-     * <p> - name: group1
-     * <p>   menu:
-     * <p>    - name: menu1
-     * <p>      url: url
-     * <p>      target: target 默认为_view
-     * <p>    - name: menu2 ....
-     * <p> - name: group2 ....
+     * <p> - name: group1</p>
+     * <p>   menu:</p>
+     * <p>    - name: menu1</p>
+     * <p>      url: url</p>
+     * <p>      target: target 默认为_view</p>
+     * <p>    - name: menu2 ....</p>
+     * <p> - name: group2 ....</p>
      * <p><b>暂时不支持子组</b></p>
      */
     private List<MenuGroup> menu = null;
