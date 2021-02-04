@@ -117,8 +117,7 @@
             <scope>test</scope>
         </dependency>
         <!-- 以上的spring 依赖
-         <p> 以下是 自定义依赖
-         -->
+            以下是 自定义依赖-->
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -159,6 +158,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- JAVA DOC -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -175,6 +175,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- 预编译 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -206,6 +207,7 @@
             </distributionManagement>
             <build>
                 <plugins>
+                    <!-- 源码 -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
@@ -226,6 +228,7 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <!-- gpg 加密 -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
