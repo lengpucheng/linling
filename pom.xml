@@ -19,12 +19,39 @@
     <!-- linling 项目info -->
     <groupId>cn.hll520.linling</groupId>
     <artifactId>linling</artifactId>
-    <version>1.2.0</version>
+    <version>${linling.version}</version>
     <name>linling</name>
     <description>Linling FrameWork</description>
-    <!-- JKD 版本 -->
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>lengpucheng</name>
+            <email>lpc@hll520.cn</email>
+            <url>https://github.com/lengpucheng</url>
+        </developer>
+    </developers>
+    <!-- 许可证 -->
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://github.com/lengpucheng/linling/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+    <!-- 项目地址 -->
+    <scm>
+        <url>https://github.com/lengpucheng/linling</url>
+        <connection>https://github.com/lengpucheng/linling.git</connection>
+        <developerConnection>https://github.com/lengpucheng</developerConnection>
+    </scm>
+
+
+    <!-- 属性管理 -->
     <properties>
+        <!-- JKD 版本 -->
         <java.version>1.8</java.version>
+        <!-- Linling 版本 -->
+        <linling.version>1.2.0</linling.version>
     </properties>
 
     <!-- 自动管理配置 -->
@@ -136,5 +163,22 @@
             </plugin>
         </plugins>
     </build>
+
+
+    <!--发布到maven仓库-->
+    <distributionManagement>
+        <repository>
+            <id>maven-linling</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-linling</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+    <!-- 发布配置 -->
+
 
 </project>
