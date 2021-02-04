@@ -19,7 +19,7 @@
     <!-- linling 项目info -->
     <groupId>cn.hll520.linling</groupId>
     <artifactId>linling</artifactId>
-    <version>${linling.version}</version>
+    <version>1.2.0</version>
     <name>linling</name>
     <description>Linling FrameWork</description>
 
@@ -50,8 +50,6 @@
     <properties>
         <!-- JKD 版本 -->
         <java.version>1.8</java.version>
-        <!-- Linling 版本 -->
-        <linling.version>1.2.0</linling.version>
     </properties>
 
     <!-- 自动管理配置 -->
