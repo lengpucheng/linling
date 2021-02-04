@@ -8,6 +8,24 @@ LinLing Core is a SpringBoot framework that have many modules and complete SQL m
 
 # 引用和打包
 
++ package 打包命令
+
+```shell
+mvn clean package  -DskipTests  -Dmaven.javadoc.skip=true
+```
+
++ install 安装命令
+
+```shell
+mvn clean install  -DskipTests  -Dmaven.javadoc.skip=true
+```
+
++ deploy 发布命令
+
+```shell
+mvn clean deploy -P release -Dmaven.javadoc.skip=true -Darguments=gpg.passphrase="gpg密码"
+```
+
 ## 1.引用
 
 在引用项目中的pom文件加入如下内容
